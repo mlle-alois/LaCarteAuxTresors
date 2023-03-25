@@ -2,10 +2,9 @@ package org.example.parser.input;
 
 import org.example.model.*;
 import org.example.model.enums.Orientation;
-import org.example.parser.exceptions.IncorrectFilePathException;
 import org.example.parser.exceptions.InvalidInputFileFormatException;
 
-import java.io.*;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
