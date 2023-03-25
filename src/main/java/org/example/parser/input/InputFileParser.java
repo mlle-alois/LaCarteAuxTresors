@@ -1,7 +1,6 @@
 package org.example.parser.input;
 
 import org.example.model.*;
-import org.example.model.enums.Mouvement;
 import org.example.model.enums.Orientation;
 import org.example.parser.exceptions.IncorrectFilePathException;
 import org.example.parser.exceptions.InvalidInputFileFormatException;
@@ -80,20 +79,7 @@ public class InputFileParser implements InputParser<Carte, String> {
         int axeHorizontal = Integer.parseInt(lineParts[2]);
         int axeVertical = Integer.parseInt(lineParts[3]);
         Orientation orientation = Orientation.valueOf(lineParts[4]);
-        List<Mouvement> mouvements = parseMouvements(lineParts[5]);
-        return new Aventurier(axeHorizontal, axeVertical, nom, orientation, mouvements);
-    }
-
-    private List<Mouvement> parseMouvements(String mouvementsString) {
-        List<Mouvement> mouvements = new ArrayList<>();
-        try {
-            for (char mouvement : mouvementsString.toCharArray()) {
-                mouvements.add(Mouvement.valueOf(String.valueOf(mouvement)));
-            }
-        } catch (IllegalArgumentException e) {
-            throw new InvalidInputFileFormatException(mouvementsString);
-        }
-        return mouvements;
+        return new Aventurier(axeHorizontal, axeVertical, nom, orientation, lineParts[5]);
     }
 
     private List<String> getFileLines(String filePath) {

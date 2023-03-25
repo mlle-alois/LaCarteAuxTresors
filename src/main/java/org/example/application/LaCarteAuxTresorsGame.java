@@ -17,7 +17,7 @@ public class LaCarteAuxTresorsGame {
     }
 
     public void jouer() {
-        Carte carte = inputFileParser.parse(INPUT_FILE_PATH);
+        inputFileParser.parse(INPUT_FILE_PATH);
         boolean everyAventuriersHasFinished;
         do {
             everyAventuriersHasFinished = true;

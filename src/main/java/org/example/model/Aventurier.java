@@ -2,7 +2,9 @@ package org.example.model;
 
 import org.example.model.enums.Mouvement;
 import org.example.model.enums.Orientation;
+import org.example.parser.exceptions.InvalidInputFileFormatException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.example.utils.GameUtils.STEP;
@@ -14,11 +16,11 @@ public class Aventurier extends Element {
     private final List<Mouvement> mouvements;
     private int nbTresorRamasse;
 
-    public Aventurier(int axeHorizontal, int axeVertical, String nom, Orientation orientation, List<Mouvement> mouvements) {
+    public Aventurier(int axeHorizontal, int axeVertical, String nom, Orientation orientation, String mouvements) {
         super(axeHorizontal, axeVertical);
         this.nom = nom;
         this.orientation = orientation;
-        this.mouvements = mouvements;
+        this.mouvements = initMouvements(mouvements);
         this.nbTresorRamasse = 0;
     }
 
@@ -38,6 +40,17 @@ public class Aventurier extends Element {
         return nbTresorRamasse;
     }
 
+    private List<Mouvement> initMouvements(String mouvementsString) {
+        List<Mouvement> mouvements = new ArrayList<>();
+        try {
+            for (char mouvement : mouvementsString.toCharArray()) {
+                mouvements.add(Mouvement.valueOf(String.valueOf(mouvement)));
+            }
+        } catch (IllegalArgumentException e) {
+            throw new InvalidInputFileFormatException(mouvementsString);
+        }
+        return mouvements;
+    }
     public boolean jouer() {
         if (mouvements.isEmpty()) {
             return false;
@@ -51,7 +64,7 @@ public class Aventurier extends Element {
         return true;
     }
 
-    public void avancer() {
+    private void avancer() {
         int newAxeVertical;
         int newAxeHorizontal;
         switch (orientation) {
@@ -81,7 +94,7 @@ public class Aventurier extends Element {
         }
     }
 
-    public void tournerAGauche() {
+    private void tournerAGauche() {
         switch (orientation) {
             case N -> setOrientation(Orientation.O);
             case S -> setOrientation(Orientation.E);
@@ -90,7 +103,7 @@ public class Aventurier extends Element {
         }
     }
 
-    public void tournerADroite() {
+    private void tournerADroite() {
         switch (orientation) {
             case N -> setOrientation(Orientation.E);
             case S -> setOrientation(Orientation.O);
@@ -99,7 +112,7 @@ public class Aventurier extends Element {
         }
     }
 
-    public void ramasserTresor(int newAxeHorizontal, int newAxeVertical) {
+    private void ramasserTresor(int newAxeHorizontal, int newAxeVertical) {
         this.nbTresorRamasse++;
         Carte.ramasserTresors(newAxeHorizontal, newAxeVertical);
     }
