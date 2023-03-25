@@ -12,13 +12,13 @@ import java.util.List;
 
 import static org.example.utils.GameUtils.*;
 
-public class CarteOutputFileParser implements OutputParser<File, Carte> {
+public class OutputFileParser implements OutputParser<File> {
 
     @Override
-    public File parse(Carte carte) {
+    public File parse() {
         try {
             FileWriter writer = new FileWriter(OUTPUT_FILE_NAME);
-            String content = parseCarte(carte);
+            String content = parseCarte();
             writer.write(content);
             writer.close();
         } catch (IOException e) {
@@ -28,14 +28,14 @@ public class CarteOutputFileParser implements OutputParser<File, Carte> {
         return new File(OUTPUT_FILE_NAME);
     }
 
-    private String parseCarte(Carte carte) {
+    private String parseCarte() {
         return CARTE + SEPARATOR + Carte.getDimensions().getHauteur() +
                 SEPARATOR + Carte.getDimensions().getLargeur() + "\n" +
-                parseMontagnes(carte.getMontagnes()) +
+                parseMontagnes(Carte.getMontagnes()) +
                 TRESOR_OUTPUT_FORMAT + "\n" +
-                parseTresors(carte.getTresors()) +
+                parseTresors(Carte.getTresors()) +
                 AVENTURIER_OUTPUT_FORMAT + "\n" +
-                parseAventuriers(carte.getAventuriers());
+                parseAventuriers(Carte.getAventuriers());
     }
 
     private String parseMontagnes(List<Montagne> montagnes) {
