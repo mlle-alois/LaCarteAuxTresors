@@ -4,17 +4,17 @@ import org.example.model.enums.CaseType;
 
 public class Tresor extends Element {
 
-    private int nombreTresor;
-    public Tresor(int axeHorizontal, int axeVertical, CaseType elementType, int nombreTresor) {
+    private int nombreTresorsRestants;
+    public Tresor(int axeHorizontal, int axeVertical, CaseType elementType, int nombreTresorsRestants) {
         super(axeHorizontal, axeVertical, elementType);
-        this.nombreTresor = nombreTresor;
+        this.nombreTresorsRestants = nombreTresorsRestants;
     }
 
-    public int getNombreTresor() {
-        return nombreTresor;
+    public int getNombreTresorsRestants() {
+        return nombreTresorsRestants;
     }
 
     public void ramasserTresor() {
-        nombreTresor--;
+        nombreTresorsRestants--;
     }
 }

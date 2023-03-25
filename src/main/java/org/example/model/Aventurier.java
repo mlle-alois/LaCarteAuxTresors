@@ -6,16 +6,21 @@ import org.example.model.enums.Orientation;
 
 import java.util.List;
 
+import static org.example.utils.GameUtils.STEP;
+
 public class Aventurier extends Element {
 
-    private String nom;
+    private final String nom;
     private Orientation orientation;
     private final List<Mouvement> mouvements;
+    private int nbTresorRamasse;
 
     public Aventurier(int axeHorizontal, int axeVertical, CaseType elementType, String nom, Orientation orientation, List<Mouvement> mouvements) {
         super(axeHorizontal, axeVertical, elementType);
+        this.nom = nom;
         this.orientation = orientation;
         this.mouvements = mouvements;
+        this.nbTresorRamasse = 0;
     }
 
     public String getNom() {
@@ -30,13 +35,13 @@ public class Aventurier extends Element {
         this.orientation = orientation;
     }
 
-    public List<Mouvement> getMouvements() {
-        return mouvements;
+    public int getNbTresorRamasse() {
+        return nbTresorRamasse;
     }
 
-    public void jouer() {
-        if(mouvements.isEmpty()) {
-            return;
+    public boolean jouer() {
+        if (mouvements.isEmpty()) {
+            return false;
         }
         Mouvement mouvement = mouvements.remove(0);
         switch (mouvement) {
@@ -44,32 +49,60 @@ public class Aventurier extends Element {
             case D -> tournerADroite();
             case G -> tournerAGauche();
         }
+        System.out.println(Carte.getPlanRepresentation());
+        return true;
     }
 
     public void avancer() {
+        int newAxeVertical;
+        int newAxeHorizontal;
         switch (orientation) {
-            case N -> setAxeVertical(getAxeVertical() - 1);
-            case S -> setAxeVertical(getAxeVertical() + 1);
-            case E -> setAxeHorizontal(getAxeHorizontal() + 1);
-            case O -> setAxeHorizontal(getAxeHorizontal() - 1);
+            case S -> {
+                newAxeVertical = getAxeVertical() + STEP;
+                newAxeHorizontal = getAxeHorizontal();
+            }
+            case E -> {
+                newAxeVertical = getAxeVertical();
+                newAxeHorizontal = getAxeHorizontal() + STEP;
+            }
+            case O -> {
+                newAxeVertical = getAxeVertical();
+                newAxeHorizontal = getAxeHorizontal() - STEP;
+            }
+            default -> {
+                newAxeVertical = getAxeVertical() - STEP;
+                newAxeHorizontal = getAxeHorizontal();
+            }
+        }
+        if (Carte.isNewPositionAvailable(newAxeHorizontal, newAxeVertical)) {
+            int oldAxeVertical = getAxeVertical();
+            int oldAxeHorizontal = getAxeHorizontal();
+            Carte.moveAventurier(oldAxeHorizontal, oldAxeVertical, newAxeHorizontal, newAxeVertical, this);
+            setAxeVertical(newAxeVertical);
+            setAxeHorizontal(newAxeHorizontal);
         }
     }
 
     public void tournerAGauche() {
         switch (orientation) {
-            case N -> setOrientation(Orientation.N);
-            case S -> setOrientation(Orientation.S);
-            case E -> setOrientation(Orientation.E);
-            case O -> setOrientation(Orientation.O);
+            case N -> setOrientation(Orientation.O);
+            case S -> setOrientation(Orientation.E);
+            case E -> setOrientation(Orientation.N);
+            case O -> setOrientation(Orientation.S);
         }
     }
 
     public void tournerADroite() {
         switch (orientation) {
-            case N -> setOrientation(Orientation.N);
-            case S -> setOrientation(Orientation.S);
-            case E -> setOrientation(Orientation.E);
-            case O -> setOrientation(Orientation.O);
+            case N -> setOrientation(Orientation.E);
+            case S -> setOrientation(Orientation.O);
+            case E -> setOrientation(Orientation.S);
+            case O -> setOrientation(Orientation.N);
         }
+    }
+
+    public void ramasserTresor(int newAxeHorizontal, int newAxeVertical) {
+        this.nbTresorRamasse++;
+        Carte.ramasserTresors(newAxeHorizontal, newAxeVertical);
     }
 }
