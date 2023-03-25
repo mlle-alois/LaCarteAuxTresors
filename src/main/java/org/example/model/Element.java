@@ -1,17 +1,13 @@
 package org.example.model;
 
-import org.example.model.enums.CaseType;
-
-public class Element {
+public abstract class Element {
 
     private int axeHorizontal;
     private int axeVertical;
-    private final CaseType elementType;
 
-    public Element(int axeHorizontal, int axeVertical, CaseType elementType) {
+    public Element(int axeHorizontal, int axeVertical) {
         this.axeHorizontal = axeHorizontal;
         this.axeVertical = axeVertical;
-        this.elementType = elementType;
     }
 
     public int getAxeHorizontal() {
@@ -24,10 +20,6 @@ public class Element {
 
     public void setAxeHorizontal(int axeHorizontal) {
         this.axeHorizontal = axeHorizontal;
-    }
-
-    public CaseType getElementType() {
-        return elementType;
     }
 
     public void setAxeVertical(int axeVertical) {

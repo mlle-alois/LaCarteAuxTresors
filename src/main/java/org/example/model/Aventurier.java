@@ -1,6 +1,5 @@
 package org.example.model;
 
-import org.example.model.enums.CaseType;
 import org.example.model.enums.Mouvement;
 import org.example.model.enums.Orientation;
 
@@ -15,8 +14,8 @@ public class Aventurier extends Element {
     private final List<Mouvement> mouvements;
     private int nbTresorRamasse;
 
-    public Aventurier(int axeHorizontal, int axeVertical, CaseType elementType, String nom, Orientation orientation, List<Mouvement> mouvements) {
-        super(axeHorizontal, axeVertical, elementType);
+    public Aventurier(int axeHorizontal, int axeVertical, String nom, Orientation orientation, List<Mouvement> mouvements) {
+        super(axeHorizontal, axeVertical);
         this.nom = nom;
         this.orientation = orientation;
         this.mouvements = mouvements;
@@ -49,7 +48,6 @@ public class Aventurier extends Element {
             case D -> tournerADroite();
             case G -> tournerAGauche();
         }
-        System.out.println(Carte.getPlanRepresentation());
         return true;
     }
 
@@ -75,11 +73,11 @@ public class Aventurier extends Element {
             }
         }
         if (Carte.isNewPositionAvailable(newAxeHorizontal, newAxeVertical)) {
-            int oldAxeVertical = getAxeVertical();
-            int oldAxeHorizontal = getAxeHorizontal();
-            Carte.moveAventurier(oldAxeHorizontal, oldAxeVertical, newAxeHorizontal, newAxeVertical, this);
             setAxeVertical(newAxeVertical);
             setAxeHorizontal(newAxeHorizontal);
+            if (Carte.isTresorOnThisPosition(newAxeHorizontal, newAxeVertical)) {
+                ramasserTresor(newAxeHorizontal, newAxeVertical);
+            }
         }
     }
 

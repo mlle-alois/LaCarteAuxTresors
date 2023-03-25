@@ -1,12 +1,10 @@
 package org.example.model;
 
-import org.example.model.enums.CaseType;
-
 public class Tresor extends Element {
 
     private int nombreTresorsRestants;
-    public Tresor(int axeHorizontal, int axeVertical, CaseType elementType, int nombreTresorsRestants) {
-        super(axeHorizontal, axeVertical, elementType);
+    public Tresor(int axeHorizontal, int axeVertical, int nombreTresorsRestants) {
+        super(axeHorizontal, axeVertical);
         this.nombreTresorsRestants = nombreTresorsRestants;
     }
 

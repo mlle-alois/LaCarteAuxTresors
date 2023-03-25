@@ -1,7 +1,6 @@
 package org.example.parser.input;
 
 import org.example.model.*;
-import org.example.model.enums.CaseType;
 import org.example.model.enums.Mouvement;
 import org.example.model.enums.Orientation;
 import org.example.parser.exceptions.IncorrectFilePathException;
@@ -62,7 +61,7 @@ public class CarteInputFileParser implements InputParser<Carte, String> {
             throw new InvalidInputFileFormatException(lineParts.length, Arrays.toString(lineParts));
         int axeHorizontal = Integer.parseInt(lineParts[1]);
         int axeVertical = Integer.parseInt(lineParts[2]);
-        return new Montagne(axeHorizontal, axeVertical, CaseType.MONTAGNE);
+        return new Montagne(axeHorizontal, axeVertical);
     }
 
     private Tresor parseTresor(String[] lineParts) {
@@ -71,7 +70,7 @@ public class CarteInputFileParser implements InputParser<Carte, String> {
         int axeHorizontal = Integer.parseInt(lineParts[1]);
         int axeVertical = Integer.parseInt(lineParts[2]);
         int nbTresors = Integer.parseInt(lineParts[3]);
-        return new Tresor(axeHorizontal, axeVertical, CaseType.TRESOR, nbTresors);
+        return new Tresor(axeHorizontal, axeVertical, nbTresors);
     }
 
     private Aventurier parseAventurier(String[] lineParts) {
@@ -82,7 +81,7 @@ public class CarteInputFileParser implements InputParser<Carte, String> {
         int axeVertical = Integer.parseInt(lineParts[3]);
         Orientation orientation = Orientation.valueOf(lineParts[4]);
         List<Mouvement> mouvements = parseMouvements(lineParts[5]);
-        return new Aventurier(axeHorizontal, axeVertical, CaseType.AVENTURIER, nom, orientation, mouvements);
+        return new Aventurier(axeHorizontal, axeVertical, nom, orientation, mouvements);
     }
 
     private List<Mouvement> parseMouvements(String mouvementsString) {

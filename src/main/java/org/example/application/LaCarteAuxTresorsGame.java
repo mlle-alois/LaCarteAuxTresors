@@ -9,11 +9,11 @@ import static org.example.utils.GameUtils.INPUT_FILE_PATH;
 
 public class LaCarteAuxTresorsGame {
     private final CarteInputFileParser carteInputFileParser;
-    private final CarteOutputFileParser outputFileGenerator;
+    private final CarteOutputFileParser carteOutputFileParser;
 
     public LaCarteAuxTresorsGame() {
         this.carteInputFileParser = new CarteInputFileParser();
-        this.outputFileGenerator = new CarteOutputFileParser();
+        this.carteOutputFileParser = new CarteOutputFileParser();
     }
 
     public void jouer() {
@@ -28,6 +28,6 @@ public class LaCarteAuxTresorsGame {
                 }
             }
         } while (!everyAventuriersHasFinished);
-        outputFileGenerator.parse(carte);
+        carteOutputFileParser.parse(carte);
     }
 }
