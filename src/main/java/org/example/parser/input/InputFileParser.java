@@ -6,6 +6,8 @@ import org.example.parser.exceptions.IncorrectFilePathException;
 import org.example.parser.exceptions.InvalidInputFileFormatException;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -83,20 +85,8 @@ public class InputFileParser implements InputParser<Carte, String> {
     }
 
     private List<String> getFileLines(String filePath) {
-        List<String> lines = new ArrayList<>();
         try {
-            File file = new File(filePath);
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = bufferedReader.readLine();
-            while (line != null) {
-                lines.add(line);
-                line = bufferedReader.readLine();
-            }
-            fileReader.close();
-            return lines;
-        } catch (FileNotFoundException e) {
-            throw new IncorrectFilePathException(filePath);
+            return Files.readAllLines(Path.of(filePath));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -12,23 +12,10 @@ import java.util.List;
 
 import static org.example.utils.GameUtils.*;
 
-public class OutputFileParser implements OutputParser<File> {
+public class OutputCarteParser implements OutputParser<String, Carte> {
 
     @Override
-    public File parse() {
-        try {
-            FileWriter writer = new FileWriter(OUTPUT_FILE_NAME);
-            String content = parseCarte();
-            writer.write(content);
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return new File(OUTPUT_FILE_NAME);
-    }
-
-    private String parseCarte() {
+    public String parse(Carte carte) {
         return CARTE + SEPARATOR + Carte.getDimensions().getHauteur() +
                 SEPARATOR + Carte.getDimensions().getLargeur() + "\n" +
                 parseMontagnes(Carte.getMontagnes()) +
