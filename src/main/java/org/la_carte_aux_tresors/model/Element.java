@@ -1,4 +1,4 @@
-package org.example.model;
+package org.la_carte_aux_tresors.model;
 
 public abstract class Element {
 

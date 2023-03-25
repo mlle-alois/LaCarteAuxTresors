@@ -1,8 +1,8 @@
-package org.example.parser.input;
+package org.la_carte_aux_tresors.parser.input;
 
-import org.example.model.*;
-import org.example.model.enums.Orientation;
-import org.example.parser.exceptions.InvalidInputFileFormatException;
+import org.la_carte_aux_tresors.model.*;
+import org.la_carte_aux_tresors.model.enums.Orientation;
+import org.la_carte_aux_tresors.parser.exceptions.InvalidInputFileFormatException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.example.utils.GameUtils.*;
+import static org.la_carte_aux_tresors.utils.GameUtils.*;
 
 public class InputFileParser implements InputParser<Carte, String> {
 

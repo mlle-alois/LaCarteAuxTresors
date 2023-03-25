@@ -1,4 +1,4 @@
-package org.example.utils;
+package org.la_carte_aux_tresors.utils;
 
 public class GameUtils {
     public static final String INPUT_FILE_PATH = "carte-input.txt";

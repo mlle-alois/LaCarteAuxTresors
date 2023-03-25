@@ -1,4 +1,4 @@
-package org.example.generator;
+package org.la_carte_aux_tresors.generator;
 
 import java.io.File;
 import java.io.FileWriter;

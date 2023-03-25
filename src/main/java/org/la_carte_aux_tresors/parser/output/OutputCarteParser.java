@@ -1,16 +1,13 @@
-package org.example.parser.output;
+package org.la_carte_aux_tresors.parser.output;
 
-import org.example.model.Aventurier;
-import org.example.model.Carte;
-import org.example.model.Montagne;
-import org.example.model.Tresor;
+import org.la_carte_aux_tresors.model.Aventurier;
+import org.la_carte_aux_tresors.model.Carte;
+import org.la_carte_aux_tresors.model.Montagne;
+import org.la_carte_aux_tresors.model.Tresor;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 
-import static org.example.utils.GameUtils.*;
+import static org.la_carte_aux_tresors.utils.GameUtils.*;
 
 public class OutputCarteParser implements OutputParser<String, Carte> {
 

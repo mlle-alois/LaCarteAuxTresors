@@ -1,6 +1,6 @@
 package generator;
 
-import org.example.generator.FileGenerator;
+import org.la_carte_aux_tresors.generator.FileGenerator;
 import org.junit.Before;
 import org.junit.Test;
 

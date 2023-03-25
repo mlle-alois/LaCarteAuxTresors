@@ -1,13 +1,13 @@
-package org.example.model;
+package org.la_carte_aux_tresors.model;
 
-import org.example.model.enums.Mouvement;
-import org.example.model.enums.Orientation;
-import org.example.parser.exceptions.InvalidInputFileFormatException;
+import org.la_carte_aux_tresors.model.enums.Mouvement;
+import org.la_carte_aux_tresors.model.enums.Orientation;
+import org.la_carte_aux_tresors.parser.exceptions.InvalidInputFileFormatException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.utils.GameUtils.STEP;
+import static org.la_carte_aux_tresors.utils.GameUtils.STEP;
 
 public class Aventurier extends Element {
 

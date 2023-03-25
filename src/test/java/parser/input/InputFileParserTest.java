@@ -1,7 +1,7 @@
 package parser.input;
 
-import org.example.model.Carte;
-import org.example.parser.input.InputFileParser;
+import org.la_carte_aux_tresors.model.Carte;
+import org.la_carte_aux_tresors.parser.input.InputFileParser;
 import org.junit.Before;
 import org.junit.Test;
 

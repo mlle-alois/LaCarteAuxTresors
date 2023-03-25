@@ -1,4 +1,4 @@
-package org.example.parser.exceptions;
+package org.la_carte_aux_tresors.parser.exceptions;
 
 public class InvalidInputFileFormatException extends RuntimeException {
 

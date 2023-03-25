@@ -1,6 +1,6 @@
-package org.example;
+package org.la_carte_aux_tresors;
 
-import org.example.application.LaCarteAuxTresorsGame;
+import org.la_carte_aux_tresors.application.LaCarteAuxTresorsGame;
 
 public class Main {
     public static void main(String[] args) {

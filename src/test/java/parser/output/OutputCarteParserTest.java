@@ -1,8 +1,8 @@
 package parser.output;
 
-import org.example.model.*;
-import org.example.model.enums.Orientation;
-import org.example.parser.output.OutputCarteParser;
+import org.la_carte_aux_tresors.model.*;
+import org.la_carte_aux_tresors.model.enums.Orientation;
+import org.la_carte_aux_tresors.parser.output.OutputCarteParser;
 import org.junit.Before;
 import org.junit.Test;
 

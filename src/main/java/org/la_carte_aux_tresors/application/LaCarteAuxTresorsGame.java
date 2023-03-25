@@ -1,13 +1,13 @@
-package org.example.application;
+package org.la_carte_aux_tresors.application;
 
-import org.example.generator.FileGenerator;
-import org.example.parser.output.OutputCarteParser;
-import org.example.model.Aventurier;
-import org.example.model.Carte;
-import org.example.parser.input.InputFileParser;
+import org.la_carte_aux_tresors.generator.FileGenerator;
+import org.la_carte_aux_tresors.parser.output.OutputCarteParser;
+import org.la_carte_aux_tresors.model.Aventurier;
+import org.la_carte_aux_tresors.model.Carte;
+import org.la_carte_aux_tresors.parser.input.InputFileParser;
 
-import static org.example.utils.GameUtils.INPUT_FILE_PATH;
-import static org.example.utils.GameUtils.OUTPUT_FILE_NAME;
+import static org.la_carte_aux_tresors.utils.GameUtils.INPUT_FILE_PATH;
+import static org.la_carte_aux_tresors.utils.GameUtils.OUTPUT_FILE_NAME;
 
 public class LaCarteAuxTresorsGame {
     private final InputFileParser inputFileParser;
